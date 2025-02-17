@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="style.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Projet Meteo Raspberry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+<body>
+
+  <div class="meteoflexbox">
+    
+  <div class="boxRasp">
+    
+  <h1 id="date-heure"></h1>
+    <h2>64000 - Arrondissement de Pau, France</h2>
+    
+  <div class="boxData">Station Météo Raspberry
+    <div class="boxDataTHP">
+      <div class="boxDataTHP-info"><div><i class="fa-solid fa-temperature-low"></i></div><div><span>Température</span><br/><span class="temperature-capteur">-- °c</span></div></div>
+      <div class="boxDataTHP-info"><div><i class="fa-solid fa-droplet"></i></div><div><span>Humidité</span><br/><span class="humidite-capteur">-- %</span></div></div>
+      <div class="boxDataTHP-info"><div><i class="fa-solid fa-gauge-high"></i></div><div><span>Pression</span></br><span class="pression-capteur">-- hPa</span></div></div>
+    </div>
+  </div>
+  
+  <div class="boxData">Historique des données de la station
+    <table>
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Température</th>
+        <th>Humidité</th>
+        <th>Pression</th>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <a href="historique_capteur_complet.html" target="_blank">Afficher plus de données ➝</a>
+  </div>
+    
+  </div>
+  <div class="boxAPI">
+  
+  <div class="boxData">Open Weather Map
+    <div class="boxDataTHP">
+      <div><i id="weather-icon" class="fa-solid fa-question"></i></div>
+      <div><span>Température</span><br/><span id="temperature-api">-- °c</span><br><div class="THPexception">Ressentie : <span id="temp-feels-like">-- °c</span></div></div>
+      <div><span>Humidité</span><br/><span id="humidity-api">-- %</span></div>
+      <div><span>Pression</span></br><span id="pressure-api">-- pHA</span></div>
+    </div>
+  </div>
+  
+  <div class="boxGraph">
+    <canvas id="temperature-chart"></canvas>
+  </div>
+    
+  <div class="boxData">Historique des données de l'API
+    <table id="historique-api-table">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Température</th>
+        <th>Humidité</th>
+        <th>Pression</th>
+        <th>Météo</th>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <a href="historique_api_complet.html" target="_blank">Afficher plus de données ➝</a>
+  </div>
+    
+  </div>
+  </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+:root{
+  --color-bg:#EBEBEB;
+  --color-main:#4F8870;
+  --color-white:#FFF;
+  --color-shadow:#2D4D3F;
+}
+
+html{
+  background:var(--color-bg);
+}
+
+.meteoflexbox{
+  margin:auto;
+  width:1170px;
+  height:540px;
+  display:flex;
+  justify-content:space-around;
+  align-content:center;
+}
+
+.boxRasp{
+  width:;
+  background:blu;
+}
+
+.boxAPI{
+  width:;
+  background:gren;
+  margin:30px 0px 0px 20px;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+h1{
+  color:var(--color-main);
+  font-family:'Bebas Neue',serif;
+  font-size:40px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:-15px;
+  text-align:center;
+  text-shadow:2px 2px 0px #FFF
+}
+
+h2{
+  color:var(--color-main);
+  font-family:'Arial', sans-serif;
+  font-size:13px;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  text-align:center;
+  font-weight:normal;
+}
+
+.boxData{
+  width:500px;
+  background:var(--color-white);
+  border-radius:10px;
+  box-sizing:border-box;
+  padding:5px;
+  text-align:center;
+  color:var(--color-main);
+  font-family:'Bebas Neue',serif;
+  font-size:25px;
+  margin-bottom:20px;
+}
+
+.boxAPI .boxData{
+  width:650px;  
+}
+
+.DataComplet{
+  width:100% !important;
+margin:auto;
+text-align:center;
+margin-top:30px;
+}
+
+.boxAPI .boxData:nth-child(1){
+  width:410px;
+}
+
+.boxDataTHP{
+  width:100%;
+  background:var(--color-white);
+  border-radius:0px 0px 5px 5px;
+  color:var(--color-white);
+  display:flex;
+  flex-wrap:wrap;
+  font-size:25px;
+  justify-content:space-around;
+}
+
+.boxAPI .boxDataTHP{
+  width:400px;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.boxDataTHP span{
+  text-transform:uppercase;
+  font-size:12px;
+  border-bottom:1px solid #FFF;
+  line-height:25px;
+}
+
+.boxDataTHP .temperature-capteur, .boxDataTHP .humidite-capteur, .boxDataTHP .pression-capteur{
+  border-bottom:none !important;
+}
+
+.boxDataTHP .boxDataTHP-info{
+  width:33%;
+  background:var(--color-main);
+  border-radius:0px 0px 5px 5px;
+  font-family:'Arial', sans-serif;
+  font-size:20px;
+  box-sizing:border-box;
+  padding:3px 0px 6px 0px;
+  height:100px;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.boxDataTHP-info div{
+  margin:auto;
+  width:100%;
+}
+
+.boxDataTHP-info div i{
+  border-radius:0px 0px 0px 0px;
+  text-shadow:2px 2px 0px var(--color-shadow);
+}
+
+.boxAPI .boxDataTHP div{
+  width:49.5% !important;
+  width:33%;
+  background:var(--color-main);
+  border-radius:0px 0px 5px 5px;
+  font-family:'Arial', sans-serif;
+  font-size:20px;
+  box-sizing:border-box;
+  padding:3px 0px 6px 0px;
+  height:100px;
+  align-content:center;
+}
+
+.boxAPI .boxDataTHP div:nth-child(1){
+  font-size:50px;
+  color:#FFF;
+  margin-bottom:2px;
+  border-radius:0px 0px 0px 0px;
+  text-shadow:2px 2px 0px var(--color-shadow);
+}
+
+.boxAPI .boxDataTHP div:nth-child(2){
+  margin-bottom:2px;
+  border-radius:0px 0px 0px 0px;
+}
+
+.boxAPI .boxDataTHP .THPexception{
+  font-size:12px;
+  width:100% !important;
+  padding-top:5px;
+  height:0px;
+}
+
+#temperature-api, #humidity-api, #pressure-api, #temp-feels-like{
+border-bottom:none !important;
+}
+
+.boxData table{
+  color:#333;
+  font-family:'Arial', sans-serif;
+  font-size:14px;
+  width:100%;
+  border:1px solid var(--color-main);
+}
+
+.boxData th{
+  background:var(--color-main);
+  color:var(--color-white);
+  text-transform:uppercase;
+  box-sizing:border-box;
+  padding:5px 0px 3px 0px;
+}
+
+.boxData tr:nth-child(even){
+  background:var(--color-bg);
+}
+
+.boxData a{
+  font-size:12px;
+  color:#333;
+  font-family:'Arial', sans-serif;
+  text-decoration:none;
+}
+
+.boxData a:hover{
+  color:var(--color-main)
+}
+
+.boxGraph{
+  width:220px;
+  background:var(--color-white);
+  border-radius:10px;
+  box-sizing:border-box;
+  padding:5px;
+  text-align:center;
+  color:var(--color-main);
+  font-family:'Bebas Neue',serif;
+  font-size:25px;
+  margin:0px 0px 20px 20px;
+  align-content:center;
+}
