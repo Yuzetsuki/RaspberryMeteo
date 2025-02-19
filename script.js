@@ -212,3 +212,55 @@ async function afficherHistoriqueAPI() {
 
 // Exécuter au chargement de la page
 document.addEventListener("DOMContentLoaded", afficherHistoriqueAPI);
+
+// Thèmes de couleurs
+const themes = {
+    "theme-default": {
+        "--color-bg": "#EBEBEB",
+        "--color-main": "#4F8870",
+        "--color-white": "#FFF",
+        "--color-shadow": "#2D4D3F"
+    },
+    "theme-dark": {
+        "--color-bg": "#1E1E1E",
+        "--color-main": "#808080",
+        "--color-white": "#333",
+        "--color-shadow": "DDD"
+    },
+    "theme-blue": {
+        "--color-bg": "#E3F2FD",
+        "--color-main": "#007BFF",
+        "--color-white": "#FFF",
+        "--color-shadow": "#004BA0"
+    },
+    "theme-red": {
+        "--color-bg": "#FFE5E5",
+        "--color-main": "#FF4D4D",
+        "--color-white": "#FFF",
+        "--color-shadow": "#990000"
+    }
+};
+
+document.querySelectorAll(".color-option").forEach(option => {
+    option.addEventListener("click", function() {
+        let selectedTheme = this.dataset.theme;
+        let root = document.documentElement;
+
+        Object.keys(themes[selectedTheme]).forEach(variable => {
+            root.style.setProperty(variable, themes[selectedTheme][variable]);
+        });
+
+        // Enregistrer le thème sélectionné dans localStorage
+        localStorage.setItem("selectedTheme", selectedTheme);
+    });
+});
+
+// Appliquer le thème enregistré au chargement
+window.addEventListener("DOMContentLoaded", () => {
+    let savedTheme = localStorage.getItem("selectedTheme") || "theme-default";
+    let root = document.documentElement;
+
+    Object.keys(themes[savedTheme]).forEach(variable => {
+        root.style.setProperty(variable, themes[savedTheme][variable]);
+    });
+});
