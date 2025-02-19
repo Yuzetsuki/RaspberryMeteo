@@ -3,7 +3,7 @@ import busio
 import mysql.connector
 from datetime import datetime
 import time
-import Adafruit_CharLCD
+from RPLCD.i2c import CharLCD
 from adafruit_bme280 import basic as adafruit_bme280
 
 # Temps d'attente initial pour éviter les erreurs au démarrage
@@ -22,7 +22,8 @@ def init_capteur():
 def init_lcd():
     """Initialise l'écran LCD et retourne l'objet LCD."""
     try:
-        return Adafruit_CharLCD.Adafruit_CharLCDPlate(address=0x27)
+        lcd = CharLCD(i2c_expander='PCF8574', address=0x27)
+        return lcd
     except Exception as e:
         print(f"Erreur lors de l'initialisation de l'écran LCD : {e}")
         return None
@@ -58,9 +59,31 @@ def lire_donnees_capteur(capteur):
 def afficher_lcd(lcd, donnees):
     """Affiche les données météo sur l'écran LCD."""
     if lcd and donnees:
+
+        temp_str = f"Temp: {donnees['temperature']}C"
+        hum_str = f"Hum: {donnees['humidity']}%"
+        pres_str = f"Pres: {donnees['pressure']}hPa"
+
+        afficher_lcd_line(lcd, temp_str)
+        time.sleep(3)
+
+        afficher_lcd_line(lcd, hum_str)
+        time.sleep(3)
+
+        afficher_lcd_line(lcd, pres_str)
+        time.sleep(3)
+
         lcd.clear()
-        lcd.message(f"Temp: {donnees['temperature']}C\n")
-        lcd.message(f"Hum: {donnees['humidity']}%  Pres: {donnees['pressure']}hPa")
+
+def afficher_lcd_line(lcd, texte):
+    """Affiche le texte en forçant la limite de 16 caractères."""
+    ligne1 = texte[:16]
+    ligne2 = texte[16:32]
+
+    lcd.clear()
+    lcd.write_string(ligne1)
+    lcd.cursor_pos = (1, 0)
+    lcd.write_string(ligne2)
 
 def enregistrer_donnees_bdd(cursor, db, donnees):
     """Enregistre les données météo dans la base de données."""
@@ -88,12 +111,14 @@ def main():
     try:
         while True:
             donnees = lire_donnees_capteur(capteur)
+
             if donnees:
                 print(f"Température : {donnees['temperature']} °C")
                 print(f"Humidité : {donnees['humidity']} %")
                 print(f"Pression : {donnees['pressure']} hPa")
 
                 afficher_lcd(lcd, donnees)
+
                 enregistrer_donnees_bdd(cursor, db, donnees)
 
             time.sleep(600)  # Pause de 10 minutes

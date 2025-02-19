@@ -1,15 +1,7 @@
 <?php
-// Connexion à la base de données
-$host = 'localhost'; // hôte
-$dbname = 'MeteoDB'; // nom de la base de données
-$username = 'root'; // utilisateur
-$password = 'P@ssw0rd'; // mot de passe
+require_once "database.php"; // fichier de connexion à la base de données
 
 try {
-    // Créer une connexion PDO
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // Configurer l'erreur PDO
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Requête SQL pour récupérer les 6 dernières lignes
     $sql = "SELECT date, heure, temperature, humidity, pressure FROM DonneesMeteo ORDER BY id DESC LIMIT 6";
